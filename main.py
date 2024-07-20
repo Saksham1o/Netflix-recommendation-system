@@ -107,3 +107,97 @@ ratings = []
 for i in movies['Rating']:
    ratings.append(i)
 
+ratings_list = sorted(set(ratings))
+binary_ratings = [[0] * 0 for i in range(len(set(ratings_list)))]
+for i in movies['Rating']:
+   k = 0
+   for j in ratings_list:
+       if j in i:
+           binary_ratings[k].append(1.0)
+       else:
+           binary_ratings[k].append(0.0)
+       k += 1
+
+binary_ratings = pd.DataFrame(binary_ratings).transpose()
+binary = pd.concat([binary_actors, binary_directors,
+                  binary_countries, binary_genres], axis=1, ignore_index=True)
+actors_2 = []
+for i in tv['Cast']:
+  actor2 = re.split(r', \s*', i)
+  actors_2.append(actor2)
+
+flat_list_5 = []
+for sublist in actors_2:
+   for item in sublist:
+       flat_list_5.append(item)
+
+actors_list_2 = sorted(set(flat_list_5))
+binary_actors_2 = [[0] * 0 for i in range(len(set(flat_list_5)))]
+for i in tv['Cast']:
+   k = 0
+   for j in actors_list_2:
+       if j in i:
+           binary_actors_2[k].append(1.0)
+       else:
+           binary_actors_2[k].append(0.0)
+       k += 1
+
+binary_actors_2 = pd.DataFrame(binary_actors_2).transpose()
+countries_2 = []
+for i in tv['Production Country']:
+   country2 = re.split(r', \s*', i)
+   countries_2.append(country2)
+
+flat_list_6 = []
+for sublist in countries_2:
+   for item in sublist:
+       flat_list_6.append(item)
+
+countries_list_2 = sorted(set(flat_list_6))
+binary_countries_2 = [[0] * 0 for i in range(len(set(flat_list_6)))]
+for i in tv['Production Country']:
+   k = 0
+   for j in countries_list_2:
+       if j in i:
+           binary_countries_2[k].append(1.0)
+       else:
+           binary_countries_2[k].append(0.0)
+       k += 1
+
+binary_countries_2 = pd.DataFrame(binary_countries_2).transpose()
+genres_2 = []
+for i in tv['Genres']:
+   genre2 = re.split(r', \s*', i)
+   genres_2.append(genre2)
+
+flat_list_7 = []
+for sublist in genres_2:
+   for item in sublist:
+       flat_list_7.append(item)
+
+genres_list_2 = sorted(set(flat_list_7))
+binary_genres_2 = [[0] * 0 for i in range(len(set(flat_list_7)))]
+for i in tv['Genres']:
+   k = 0
+   for j in genres_list_2:
+       if j in i:
+           binary_genres_2[k].append(1.0)
+       else:
+           binary_genres_2[k].append(0.0)
+       k += 1
+
+binary_genres_2 = pd.DataFrame(binary_genres_2).transpose()
+ratings_2 = []
+for i in tv['Rating']:
+   ratings_2.append(i)
+
+ratings_list_2 = sorted(set(ratings_2))
+binary_ratings_2 = [[0] * 0 for i in range(len(set(ratings_list_2)))]
+for i in tv['Rating']:
+   k = 0
+   for j in ratings_list_2:
+       if j in i:
+           binary_ratings_2[k].append(1.0)
+       else:
+           binary_ratings_2[k].append(0.0)
+       k += 1
